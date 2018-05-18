@@ -1,13 +1,10 @@
 package com.kingxunlian.message.biz.dto;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.Date;
 
 public class MessageLog implements Serializable {
-
-
-    private BigInteger id;
+    private Long id;
 
     private Date logTime;
 
@@ -15,15 +12,15 @@ public class MessageLog implements Serializable {
 
     private Byte logType;
 
-    private BigInteger logRel;
+    private Long logRel;
 
-    public MessageLog(){}
+    private static final long serialVersionUID = 1L;
 
-    public BigInteger getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -51,11 +48,11 @@ public class MessageLog implements Serializable {
         this.logType = logType;
     }
 
-    public BigInteger getLogRel() {
+    public Long getLogRel() {
         return logRel;
     }
 
-    public void setLogRel(BigInteger logRel) {
+    public void setLogRel(Long logRel) {
         this.logRel = logRel;
     }
 }

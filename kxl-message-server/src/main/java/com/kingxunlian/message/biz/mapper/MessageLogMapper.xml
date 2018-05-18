@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingxunlian.message.biz.mapper.MessageLogMapper">
+  <resultMap id="BaseResultMap" type="com.kingxunlian.message.biz.dto.MessageLog">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="log_time" jdbcType="TIMESTAMP" property="logTime" />
+    <result column="log_desc" jdbcType="VARCHAR" property="logDesc" />
+    <result column="log_type" jdbcType="TINYINT" property="logType" />
+    <result column="log_rel" jdbcType="BIGINT" property="logRel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, log_time, log_desc, log_type, log_rel
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from kxl_message_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from kxl_message_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.kingxunlian.message.biz.dto.MessageLog">
+    insert into kxl_message_log (id, log_time, log_desc, 
+      log_type, log_rel)
+    values (#{id,jdbcType=BIGINT}, #{logTime,jdbcType=TIMESTAMP}, #{logDesc,jdbcType=VARCHAR}, 
+      #{logType,jdbcType=TINYINT}, #{logRel,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kingxunlian.message.biz.dto.MessageLog">
+    insert into kxl_message_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="logTime != null">
+        log_time,
+      </if>
+      <if test="logDesc != null">
+        log_desc,
+      </if>
+      <if test="logType != null">
+        log_type,
+      </if>
+      <if test="logRel != null">
+        log_rel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="logTime != null">
+        #{logTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logDesc != null">
+        #{logDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null">
+        #{logType,jdbcType=TINYINT},
+      </if>
+      <if test="logRel != null">
+        #{logRel,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kingxunlian.message.biz.dto.MessageLog">
+    update kxl_message_log
+    <set>
+      <if test="logTime != null">
+        log_time = #{logTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logDesc != null">
+        log_desc = #{logDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null">
+        log_type = #{logType,jdbcType=TINYINT},
+      </if>
+      <if test="logRel != null">
+        log_rel = #{logRel,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kingxunlian.message.biz.dto.MessageLog">
+    update kxl_message_log
+    set log_time = #{logTime,jdbcType=TIMESTAMP},
+      log_desc = #{logDesc,jdbcType=VARCHAR},
+      log_type = #{logType,jdbcType=TINYINT},
+      log_rel = #{logRel,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
