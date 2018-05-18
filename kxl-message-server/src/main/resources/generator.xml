@@ -32,9 +32,9 @@
 
 
 
-        <!-- 生成的实体存放路径 -->
+        <!--实体存放路径 -->
         <javaModelGenerator targetPackage="com.kingxunlian.message.biz.dto" targetProject="src/main/java">
-            <property name="AutoMessageLog" value="true"/>
+            <property name="MessageLog" value="true"/>
         </javaModelGenerator>
         <!-- 自动生成的Mapper.xml的存放路径 -->
         <sqlMapGenerator targetPackage="com.kingxunlian.message.biz.mapper" targetProject="src/main/java">
